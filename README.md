@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
+<meta name="apple-mobile-web-app-title" content="TR Candidature">
+<meta name="application-name" content="TR Candidature">
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- AJOUTEZ ICI LES 3 LIGNES -->
