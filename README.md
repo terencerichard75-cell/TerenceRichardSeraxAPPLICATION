@@ -1,1367 +1,1087 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="apple-mobile-web-app-title" content="TR Candidature">
-<meta name="application-name" content="TR Candidature">
-<meta name="title" content="Candidature Directeur Commercial Serax">
-<meta property="og:title" content="Candidature Directeur Commercial Serax">
-<title>Vision Stratégique France — Terence Richard</title>
+<title>Terence Richard — Serax France</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════════════════
-   RESET & VARIABLES
-═══════════════════════════════════════ */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-  --cream: #f5f0e8; --cream-dark: #ede6d6; --cream-mid: #f9f5ef;
-  --sand: #c9b99a; --sand-light: #e2d8c8;
-  --ink: #1a1714; --ink-soft: #3a3530; --ink-muted: #7a7268;
-  --white: #fdfaf6;
-  --nav-h: 54px;
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-}
-html { scroll-behavior: smooth; }
-body { background: var(--cream-mid); color: var(--ink); font-family: 'Jost', sans-serif; font-weight: 300; letter-spacing: 0.02em; overflow-x: hidden; }
+  :root {
+    --cream: #F5F0E8;
+    --cream-dark: #EDE7D9;
+    --ink: #1A1714;
+    --sand: #C9B99A;
+    --sand-light: #DDD0BA;
+    --terra: #8B6B4A;
+    --white: #FDFAF5;
+    --accent: #6B4F35;
+  }
 
-/* ═══════════════════════════════════════
-   ANNOUNCE BAR
-═══════════════════════════════════════ */
-.announce {
-  background: var(--ink); color: var(--cream);
-  text-align: center; font-size: 10.5px;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  padding: 9px 20px; font-weight: 400;
-  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  transition: height 0.4s var(--ease-out), padding 0.4s var(--ease-out), opacity 0.3s;
-}
-.announce em { color: var(--sand); font-style: normal; }
-.announce.hidden { height: 0; padding-top: 0; padding-bottom: 0; opacity: 0; overflow: hidden; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ═══════════════════════════════════════
-   TOP BAR (desktop only)
-═══════════════════════════════════════ */
-.topbar {
-  height: 36px; background: var(--cream-mid);
-  border-bottom: 1px solid var(--sand-light);
-  display: flex; align-items: center;
-  justify-content: flex-end; padding: 0 48px; gap: 28px;
-  transition: height 0.3s var(--ease-out), opacity 0.3s;
-  overflow: hidden;
-}
-.topbar.hidden { height: 0; opacity: 0; pointer-events: none; }
-.topbar-item {
-  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--ink-muted); text-decoration: none; cursor: pointer;
-  transition: color 0.2s; display: flex; align-items: center; gap: 5px;
-}
-.topbar-item:hover { color: var(--ink); }
-.topbar-item svg { width: 12px; height: 12px; }
-.topbar-langs { display: flex; gap: 1px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
-.topbar-langs span { color: var(--ink-muted); padding: 2px 5px; cursor: pointer; transition: color 0.2s; }
-.topbar-langs span.active, .topbar-langs span:hover { color: var(--ink); }
-.topbar-langs .sep { color: var(--sand-light); display: flex; align-items: center; }
+  html { scroll-behavior: smooth; }
 
-/* ═══════════════════════════════════════
-   STICKY HEADER
-═══════════════════════════════════════ */
-.sticky-header { position: sticky; top: 0; z-index: 1000; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
 
-/* ═══════════════════════════════════════
-   NAVBAR
-═══════════════════════════════════════ */
-.navbar {
-  height: var(--nav-h); background: var(--cream-mid);
-  border-bottom: 1px solid var(--sand-light);
-  display: grid; grid-template-columns: 1fr auto 1fr;
-  align-items: center; padding: 0 48px;
-  position: relative;
-  transition: box-shadow 0.3s, background 0.3s;
-}
-.navbar.scrolled {
-  box-shadow: 0 4px 40px rgba(26,23,20,0.09);
-  background: rgba(249,245,239,0.97);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-.nav-left { display: flex; align-items: center; }
-.nav-right { display: flex; align-items: center; justify-content: flex-end; gap: 2px; }
-.logo {
-  font-family: 'Cormorant Garamond', serif; font-size: 21px;
-  font-weight: 500; letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--ink); text-decoration: none;
-  transition: letter-spacing 0.3s;
-}
-.logo:hover { letter-spacing: 0.38em; }
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 48px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(245,240,232,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,185,154,0.3);
+    transition: all 0.4s ease;
+  }
+  nav.scrolled {
+    background: rgba(245,240,232,0.98);
+    border-bottom-color: rgba(201,185,154,0.6);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { opacity: 1; }
+  .nav-links a.active {
+    border-bottom: 1px solid var(--sand);
+    padding-bottom: 2px;
+  }
 
-/* ─── Nav items ─── */
-.nav-item { position: relative; height: var(--nav-h); display: flex; align-items: center; }
-.nav-link {
-  font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--ink-soft); text-decoration: none; padding: 0 14px;
-  height: 100%; display: flex; align-items: center; cursor: pointer;
-  transition: color 0.22s; white-space: nowrap; font-weight: 400;
-  border: none; background: none; position: relative;
-  gap: 5px;
-}
-.nav-link:hover, .nav-item.open .nav-link { color: var(--ink); }
-.nav-link::after {
-  content: ''; position: absolute; bottom: 0; left: 14px; right: 14px;
-  height: 1.5px; background: var(--ink);
-  transform: scaleX(0); transform-origin: left;
-  transition: transform 0.32s var(--ease-out);
-}
-.nav-item:hover .nav-link::after, .nav-item.open .nav-link::after { transform: scaleX(1); }
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-text {
+    position: absolute;
+    top: 50%;
+    right: -40px;
+    transform: translateY(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28vw;
+    font-weight: 300;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201,185,154,0.18);
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+  }
+  .hero-eyebrow {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 32px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 6vw, 88px);
+    font-weight: 300;
+    line-height: 1.1;
+    max-width: 820px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.9s 0.4s forwards;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--terra);
+  }
+  .hero-sub {
+    margin-top: 40px;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s 0.7s forwards;
+    max-width: 500px;
+    line-height: 1.8;
+  }
+  .hero-line {
+    position: absolute;
+    bottom: 60px;
+    left: 48px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sand);
+    opacity: 0;
+    animation: fadeIn 1s 1.2s forwards;
+  }
+  .hero-line::before {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 1px;
+    background: var(--sand);
+  }
+  .scroll-indicator {
+    position: absolute;
+    bottom: 56px;
+    right: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeIn 1s 1.5s forwards;
+  }
+  .scroll-indicator span {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sand);
+    writing-mode: vertical-rl;
+  }
+  .scroll-indicator::after {
+    content: '';
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--sand), transparent);
+  }
 
-/* Chevron dans les nav-link */
-.nav-chev {
-  display: inline-flex; align-items: center;
-  opacity: 0.45;
-  transition: transform 0.28s var(--ease-out), opacity 0.2s;
-}
-.nav-chev svg { width: 8px; height: 8px; }
-.nav-item.open .nav-chev { transform: rotate(180deg); opacity: 0.75; }
+  /* ── SECTIONS ── */
+  section {
+    padding: 120px 48px;
+  }
+  .section-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 96px;
+    font-weight: 300;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(201,185,154,0.4);
+    line-height: 1;
+    margin-bottom: -20px;
+    user-select: none;
+  }
+  .section-label {
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 20px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 54px);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 48px;
+    max-width: 700px;
+  }
+  .section-title em { font-style: italic; color: var(--terra); }
 
-.icon-btn {
-  width: 40px; height: var(--nav-h); display: flex;
-  align-items: center; justify-content: center;
-  cursor: pointer; color: var(--ink-soft);
-  transition: color 0.2s; text-decoration: none;
-}
-.icon-btn:hover { color: var(--ink); }
-.icon-btn svg { width: 17px; height: 17px; stroke-width: 1.4; }
+  .divider {
+    width: 48px;
+    height: 1px;
+    background: var(--sand);
+    margin-bottom: 32px;
+  }
 
-/* ─── Hamburger ─── */
-.hamburger {
-  display: none; flex-direction: column; justify-content: center;
-  align-items: center; gap: 5px; cursor: pointer;
-  width: 40px; height: var(--nav-h); border: none; background: none;
-  padding: 0; z-index: 1001;
-}
-.hamburger span {
-  display: block; width: 22px; height: 1.5px;
-  background: var(--ink);
-  transition: transform 0.32s var(--ease-out), opacity 0.22s, width 0.22s;
-  transform-origin: center;
-}
-.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; width: 14px; }
-.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  /* ── SECTION UNDERSTANDING ── */
+  #understanding { background: var(--white); }
+  .understanding-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    margin-top: 60px;
+  }
+  .understanding-card {
+    background: var(--cream);
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s;
+  }
+  .understanding-card:hover { background: var(--cream-dark); }
+  .card-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: rgba(201,185,154,0.5);
+    margin-bottom: 24px;
+  }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+  .card-body {
+    font-size: 14px;
+    line-height: 1.9;
+    color: rgba(26,23,20,0.75);
+  }
+  .card-tag {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terra);
+    border-bottom: 1px solid var(--sand-light);
+    padding-bottom: 2px;
+  }
 
-/* ═══════════════════════════════════════
-   MEGA MENU — DESKTOP  (hover intent)
-═══════════════════════════════════════ */
-.mega-wrapper { position: absolute; top: 100%; left: 0; right: 0; z-index: 999; }
+  /* ── SECTION CHALLENGES ── */
+  #challenges { background: var(--ink); color: var(--cream); }
+  #challenges .section-label { color: var(--sand); }
+  #challenges .section-title { color: var(--cream); }
+  #challenges .section-number { -webkit-text-stroke-color: rgba(245,240,232,0.08); }
+  .challenge-list { display: flex; flex-direction: column; gap: 2px; margin-top: 60px; }
+  .challenge-item {
+    display: grid;
+    grid-template-columns: 80px 1fr 320px;
+    align-items: center;
+    padding: 36px 40px;
+    background: rgba(255,255,255,0.03);
+    border-left: 1px solid rgba(201,185,154,0.15);
+    transition: all 0.4s;
+    cursor: default;
+  }
+  .challenge-item:hover {
+    background: rgba(255,255,255,0.06);
+    border-left-color: var(--sand);
+  }
+  .challenge-idx {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: rgba(201,185,154,0.4);
+  }
+  .challenge-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.4;
+    color: var(--cream);
+  }
+  .challenge-note {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: rgba(201,185,154,0.6);
+    line-height: 1.7;
+    text-align: right;
+  }
+  .challenge-verdict {
+    margin-top: 60px;
+    padding: 48px;
+    border: 1px solid rgba(201,185,154,0.2);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--sand);
+    line-height: 1.6;
+    max-width: 780px;
+  }
 
-.mega-menu {
-  background: var(--white);
-  border-top: 1px solid var(--sand-light);
-  border-bottom: 1px solid var(--sand-light);
-  box-shadow: 0 20px 56px rgba(26,23,20,0.1);
-  /* Toujours dans le DOM, géré par opacity + visibility + transform */
-  opacity: 0;
-  transform: translateY(-6px);
-  visibility: hidden;
-  pointer-events: none;
-  transition:
-    opacity 0.28s var(--ease-out),
-    transform 0.28s var(--ease-out),
-    visibility 0s 0.28s;
-}
-.mega-menu.active {
-  opacity: 1;
-  transform: translateY(0);
-  visibility: visible;
-  pointer-events: all;
-  transition:
-    opacity 0.28s var(--ease-out),
-    transform 0.28s var(--ease-out),
-    visibility 0s 0s;
-}
+  /* ── OBJECTION ── */
+  #objection { background: var(--cream); }
+  .objection-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-top: 60px;
+  }
+  .objection-left {
+    padding: 56px;
+    background: var(--ink);
+    color: var(--cream);
+  }
+  .objection-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 24px;
+  }
+  .objection-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.5;
+    color: rgba(245,240,232,0.85);
+  }
+  .objection-right {}
+  .response-step {
+    display: flex;
+    gap: 24px;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(201,185,154,0.3);
+  }
+  .response-step:last-child { border-bottom: none; }
+  .step-marker {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--sand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--terra);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .step-content {}
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .step-body {
+    font-size: 14px;
+    line-height: 1.9;
+    color: rgba(26,23,20,0.75);
+  }
+  .bridge-visual {
+    margin-top: 60px;
+    padding: 40px;
+    background: var(--cream-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 16px;
+  }
+  .bridge-node {
+    text-align: center;
+    flex: 1;
+  }
+  .bridge-node-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 12px;
+  }
+  .bridge-node-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  .bridge-arrow {
+    color: var(--sand);
+    font-size: 20px;
+    flex-shrink: 0;
+  }
 
-.mega-inner {
-  max-width: 1280px; margin: 0 auto;
-  padding: 44px 48px 48px; display: grid;
-}
-.mega-col-title {
-  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--ink-muted); margin-bottom: 16px; padding-bottom: 10px;
-  border-bottom: 1px solid var(--sand-light); font-weight: 400;
-}
-.mega-col-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.mega-col-links a {
-  font-size: 12.5px; letter-spacing: 0.06em; color: var(--ink-soft);
-  text-decoration: none; font-weight: 300; display: flex; align-items: center;
-  transition: color 0.2s, padding-left 0.22s var(--ease-out);
-}
-.mega-col-links a::before {
-  content: '—'; font-size: 9px; color: var(--sand);
-  opacity: 0; width: 0; overflow: hidden; margin-right: 0;
-  transition: opacity 0.2s, width 0.22s var(--ease-out), margin-right 0.22s var(--ease-out);
-}
-.mega-col-links a:hover { color: var(--ink); }
-.mega-col-links a:hover::before { opacity: 1; width: 12px; margin-right: 6px; }
+  /* ── PREUVES ── */
+  #preuves { background: var(--white); }
+  .preuves-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid rgba(201,185,154,0.4);
+    margin-bottom: 0;
+    margin-top: 48px;
+    overflow-x: auto;
+  }
+  .tab-btn {
+    padding: 16px 28px;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(26,23,20,0.45);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+    white-space: nowrap;
+    font-family: 'Jost', sans-serif;
+    margin-bottom: -1px;
+  }
+  .tab-btn:hover { color: var(--ink); }
+  .tab-btn.active {
+    color: var(--ink);
+    border-bottom-color: var(--terra);
+  }
+  .tab-content { display: none; padding: 60px 0 0; }
+  .tab-content.active { display: block; }
+  .proof-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .proof-challenge {
+    padding: 40px;
+    background: var(--cream);
+    border-left: 3px solid var(--sand);
+  }
+  .proof-challenge-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 16px;
+  }
+  .proof-challenge-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+  .proof-evidence-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 20px;
+  }
+  .proof-evidence-text {
+    font-size: 15px;
+    line-height: 1.9;
+    color: rgba(26,23,20,0.8);
+  }
+  .proof-kpi {
+    display: flex;
+    gap: 32px;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(201,185,154,0.3);
+  }
+  .kpi-item {}
+  .kpi-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--terra);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .kpi-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(26,23,20,0.5);
+    line-height: 1.4;
+  }
 
-.mega-see-all {
-  display: inline-flex; align-items: center; gap: 8px;
-  margin-top: 16px; font-size: 10px;
-  letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-muted);
-  text-decoration: none; font-weight: 400;
-  transition: color 0.2s, gap 0.22s var(--ease-out);
-}
-.mega-see-all::after { content: '→'; transition: transform 0.22s var(--ease-out); }
-.mega-see-all:hover { color: var(--ink); gap: 12px; }
-.mega-see-all:hover::after { transform: translateX(3px); }
+  /* ── 90 JOURS ── */
+  #jours { background: var(--cream); }
+  .phases {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    margin-top: 60px;
+  }
+  .phase {
+    padding: 48px 40px;
+    background: var(--white);
+    transition: background 0.4s;
+    position: relative;
+  }
+  .phase:hover { background: var(--cream-dark); }
+  .phase-period {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 12px;
+  }
+  .phase-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 32px;
+    line-height: 1.3;
+  }
+  .phase-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .phase-item {
+    font-size: 13px;
+    line-height: 1.7;
+    color: rgba(26,23,20,0.75);
+    padding-left: 16px;
+    position: relative;
+  }
+  .phase-item::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--sand);
+    font-size: 10px;
+  }
+  .phase-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: transparent;
+    transition: background 0.4s;
+  }
+  .phase:hover .phase-bar { background: var(--sand); }
 
-/* Backdrop desktop */
-.menu-overlay {
-  position: fixed; inset: 0;
-  background: rgba(26,23,20,0.16);
-  backdrop-filter: blur(1.5px);
-  -webkit-backdrop-filter: blur(1.5px);
-  z-index: 998;
-  opacity: 0; pointer-events: none;
-  transition: opacity 0.28s var(--ease-out);
-}
-.menu-overlay.active { opacity: 1; pointer-events: all; }
+  /* ── CTA ── */
+  #cta {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 120px 48px;
+    text-align: center;
+  }
+  #cta .section-label { color: var(--sand); }
+  #cta .section-number { -webkit-text-stroke-color: rgba(245,240,232,0.06); }
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(38px, 5vw, 68px);
+    font-weight: 300;
+    line-height: 1.2;
+    max-width: 700px;
+    margin: 0 auto 32px;
+    color: var(--cream);
+  }
+  .cta-title em { font-style: italic; color: var(--sand); }
+  .cta-sub {
+    font-size: 15px;
+    line-height: 1.9;
+    color: rgba(245,240,232,0.6);
+    max-width: 560px;
+    margin: 0 auto 56px;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    padding: 16px 40px;
+    background: var(--cream);
+    color: var(--ink);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Jost', sans-serif;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { background: var(--sand-light); }
+  .btn-secondary {
+    padding: 16px 40px;
+    border: 1px solid rgba(201,185,154,0.4);
+    color: rgba(245,240,232,0.7);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Jost', sans-serif;
+    transition: all 0.3s;
+  }
+  .btn-secondary:hover {
+    border-color: var(--sand);
+    color: var(--cream);
+  }
 
-/* ═══════════════════════════════════════
-   MOBILE DRAWER
-═══════════════════════════════════════ */
-.mobile-drawer {
-  position: fixed; top: 0; right: 0; bottom: 0;
-  width: min(85vw, 340px);
-  background: var(--white);
-  z-index: 1002;
-  transform: translateX(102%);
-  transition: transform 0.42s var(--ease-out);
-  overflow-y: auto;
-  display: flex; flex-direction: column;
-  box-shadow: -10px 0 50px rgba(26,23,20,0.14);
-}
-.mobile-drawer.open { transform: translateX(0); }
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 32px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(201,185,154,0.1);
+  }
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    color: rgba(245,240,232,0.4);
+  }
+  .footer-note {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: rgba(245,240,232,0.25);
+  }
 
-.drawer-header {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 20px 24px; border-bottom: 1px solid var(--sand-light);
-  flex-shrink: 0;
-}
-.drawer-logo {
-  font-family: 'Cormorant Garamond', serif; font-size: 20px;
-  font-weight: 500; letter-spacing: 0.3em; color: var(--ink);
-}
-.drawer-close {
-  width: 36px; height: 36px; display: flex;
-  align-items: center; justify-content: center;
-  border: none; background: none; cursor: pointer; color: var(--ink-muted);
-  transition: color 0.2s, transform 0.22s var(--ease-out);
-}
-.drawer-close:hover { color: var(--ink); transform: rotate(90deg); }
-.drawer-close svg { width: 18px; height: 18px; }
+  /* ── REVEAL ANIMATIONS ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
 
-.drawer-nav { flex: 1; padding: 8px 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
-.drawer-section { border-bottom: 1px solid var(--sand-light); }
+  @keyframes fadeUp {
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
 
-.drawer-item {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 24px; cursor: pointer;
-  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--ink-soft); font-weight: 400;
-  transition: background 0.2s, color 0.2s;
-  border: none; background: none; width: 100%; text-align: left;
-}
-.drawer-item:hover { background: var(--cream-mid); color: var(--ink); }
-.drawer-item svg { width: 14px; height: 14px; transition: transform 0.3s var(--ease-out); flex-shrink: 0; }
-.drawer-item.expanded svg { transform: rotate(180deg); }
-
-.drawer-sub {
-  max-height: 0; overflow: hidden;
-  transition: max-height 0.38s var(--ease-out);
-  background: var(--cream-mid);
-}
-.drawer-sub.open { max-height: 600px; }
-.drawer-sub a {
-  display: block; padding: 12px 24px 12px 36px;
-  font-size: 12.5px; color: var(--ink-muted);
-  text-decoration: none; font-weight: 300;
-  letter-spacing: 0.04em;
-  transition: color 0.2s, padding-left 0.22s var(--ease-out);
-}
-.drawer-sub a:hover { color: var(--ink); padding-left: 40px; }
-.drawer-sub-title {
-  padding: 10px 24px 6px 36px;
-  font-size: 9.5px; letter-spacing: 0.2em;
-  text-transform: uppercase; color: var(--sand); font-weight: 400;
-  margin-top: 4px;
-}
-
-.drawer-footer {
-  padding: 24px; border-top: 1px solid var(--sand-light);
-  display: flex; gap: 16px; flex-shrink: 0;
-}
-.drawer-footer a {
-  flex: 1; text-align: center; padding: 12px;
-  font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--ink-muted); text-decoration: none; border: 1px solid var(--sand-light);
-  transition: all 0.22s; font-weight: 400;
-}
-.drawer-footer a:hover { border-color: var(--ink); color: var(--ink); }
-.drawer-footer a.primary { background: var(--ink); color: var(--cream); border-color: var(--ink); }
-.drawer-footer a.primary:hover { background: var(--ink-soft); }
-
-.drawer-overlay {
-  position: fixed; inset: 0; background: rgba(26,23,20,0.32);
-  backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
-  z-index: 1001; opacity: 0; pointer-events: none;
-  transition: opacity 0.35s var(--ease-out);
-}
-.drawer-overlay.open { opacity: 1; pointer-events: all; }
-
-/* ═══════════════════════════════════════
-   HERO
-═══════════════════════════════════════ */
-.hero { min-height: 92vh; display: grid; grid-template-columns: 1fr 1fr; }
-.hero-visual { background: var(--cream-dark); position: relative; overflow: hidden; }
-.hero-pattern {
-  position: absolute; inset: 0;
-  background:
-    repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(201,185,154,0.12) 40px,rgba(201,185,154,0.12) 41px),
-    repeating-linear-gradient(-45deg,transparent,transparent 40px,rgba(201,185,154,0.08) 40px,rgba(201,185,154,0.08) 41px);
-}
-.hero-monogram {
-  position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%,-50%);
-  font-family: 'Cormorant Garamond', serif; font-size: 260px;
-  font-weight: 300; color: rgba(201,185,154,0.2);
-  line-height: 1; user-select: none;
-  animation: fadeIn 1.2s ease both;
-}
-.hero-label {
-  position: absolute; bottom: 48px; left: 48px;
-  writing-mode: vertical-lr; text-orientation: mixed;
-  transform: rotate(180deg);
-  font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
-  color: var(--ink-muted);
-}
-.hero-content {
-  background: var(--white); display: flex; flex-direction: column;
-  justify-content: center; padding: 80px 72px 80px 64px;
-  animation: slideUp 0.9s 0.2s ease both;
-}
-.hero-eyebrow { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--sand); margin-bottom: 24px; font-weight: 400; }
-.hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4.5vw, 62px); font-weight: 400; line-height: 1.08; color: var(--ink); margin-bottom: 12px; }
-.hero-title em { font-style: italic; font-weight: 300; color: var(--ink-soft); }
-.hero-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 300; color: var(--ink-muted); letter-spacing: 0.08em; margin-bottom: 36px; font-style: italic; }
-.hero-divider { width: 48px; height: 1px; background: var(--sand); margin-bottom: 32px; }
-.hero-intro { font-size: 14.5px; line-height: 1.85; color: var(--ink-soft); margin-bottom: 48px; max-width: 420px; font-weight: 300; }
-.hero-cta { display: inline-flex; align-items: center; gap: 14px; font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); text-decoration: none; font-weight: 400; cursor: pointer; transition: gap 0.3s var(--ease-out); }
-.hero-cta:hover { gap: 20px; }
-.hero-cta-line { width: 32px; height: 1px; background: var(--ink); display: inline-block; transition: width 0.3s var(--ease-out); }
-.hero-cta:hover .hero-cta-line { width: 48px; }
-
-/* ═══════════════════════════════════════
-   SECTIONS — COMMONS
-═══════════════════════════════════════ */
-.section { padding: 88px 0; }
-.section-inner { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
-.section-header { margin-bottom: 52px; }
-.section-tag { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--sand); margin-bottom: 14px; display: block; font-weight: 400; }
-.section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 3vw, 40px); font-weight: 400; line-height: 1.12; color: var(--ink); }
-.section-title em { font-style: italic; font-weight: 300; }
-
-/* ═══════════════════════════════════════
-   PROFIL
-═══════════════════════════════════════ */
-.profil-section { background: var(--white); }
-.profil-grid { display: grid; grid-template-columns: 1fr 2px 1fr; gap: 64px; align-items: start; }
-.profil-div-v { background: var(--sand-light); }
-.profil-text { font-size: 15px; line-height: 1.9; color: var(--ink-soft); font-weight: 300; }
-.profil-text p + p { margin-top: 16px; }
-.tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
-.tag { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid var(--sand); color: var(--ink-muted); padding: 7px 14px; font-weight: 400; transition: all 0.2s; cursor: default; }
-.tag:hover { border-color: var(--ink); color: var(--ink); transform: translateY(-1px); }
-.stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--sand-light); border: 1px solid var(--sand-light); }
-.stat-card { background: var(--white); padding: 30px 24px; transition: background 0.2s; cursor: default; }
-.stat-card:hover { background: var(--cream-mid); }
-.stat-num { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 300; color: var(--ink); line-height: 1; margin-bottom: 8px; }
-.stat-num sup { font-size: 22px; }
-.stat-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-muted); line-height: 1.4; font-weight: 400; }
-
-/* ═══════════════════════════════════════
-   MARCHÉ
-═══════════════════════════════════════ */
-.marche-section { background: var(--cream-mid); }
-.marche-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--sand-light); border: 1px solid var(--sand-light); }
-.marche-card { background: var(--white); padding: 40px 32px; position: relative; overflow: hidden; cursor: default; transition: background 0.25s; }
-.marche-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--sand); transform: scaleX(0); transform-origin: left; transition: transform 0.35s var(--ease-out); }
-.marche-card:hover { background: var(--cream-mid); }
-.marche-card:hover::before { transform: scaleX(1); }
-.marche-icon { width: 38px; height: 38px; margin-bottom: 22px; color: var(--sand); }
-.marche-icon svg { width: 100%; height: 100%; stroke-width: 1; }
-.marche-card-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--ink); margin-bottom: 12px; }
-.marche-card-text { font-size: 13px; line-height: 1.8; color: var(--ink-muted); font-weight: 300; }
-.marche-list { list-style: none; margin-top: 14px; display: flex; flex-direction: column; gap: 7px; }
-.marche-list li { font-size: 12.5px; color: var(--ink-soft); padding-left: 14px; position: relative; font-weight: 300; }
-.marche-list li::before { content: '—'; position: absolute; left: 0; color: var(--sand); font-size: 10px; }
-
-/* ═══════════════════════════════════════
-   STRATÉGIE
-═══════════════════════════════════════ */
-.strategie-section { background: var(--ink); color: var(--cream); }
-.strategie-section .section-title { color: var(--cream); }
-.axes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: rgba(201,185,154,0.2); border: 1px solid rgba(201,185,154,0.2); }
-.axe-card { background: var(--ink); padding: 48px 36px; position: relative; overflow: hidden; transition: background 0.25s; cursor: default; }
-.axe-card:hover { background: #262219; }
-.axe-num { font-family: 'Cormorant Garamond', serif; font-size: 80px; font-weight: 300; color: rgba(201,185,154,0.12); line-height: 1; position: absolute; top: 20px; right: 24px; transition: color 0.3s; }
-.axe-card:hover .axe-num { color: rgba(201,185,154,0.22); }
-.axe-tag { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sand); margin-bottom: 16px; display: block; font-weight: 400; }
-.axe-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--cream); margin-bottom: 16px; line-height: 1.2; }
-.axe-text { font-size: 13px; line-height: 1.8; color: rgba(245,240,232,0.6); font-weight: 300; }
-.axe-list { list-style: none; margin-top: 18px; display: flex; flex-direction: column; gap: 8px; }
-.axe-list li { font-size: 12.5px; color: rgba(245,240,232,0.6); padding-left: 16px; position: relative; font-weight: 300; }
-.axe-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 6px; height: 1px; background: var(--sand); }
-
-/* ═══════════════════════════════════════
-   PLAN 90 JOURS
-═══════════════════════════════════════ */
-.plan-section { background: var(--cream-mid); }
-.plan-timeline { display: grid; grid-template-columns: repeat(3,1fr); position: relative; }
-.plan-timeline::before { content: ''; position: absolute; top: 32px; left: 16.6%; right: 16.6%; height: 1px; background: var(--sand-light); }
-.plan-phase { padding: 0 28px 40px; text-align: center; }
-.plan-dot { width: 64px; height: 64px; border-radius: 50%; border: 1px solid var(--sand-light); background: var(--white); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--sand); position: relative; z-index: 1; transition: all 0.3s var(--ease-out); }
-.plan-phase:hover .plan-dot { background: var(--ink); border-color: var(--ink); color: var(--cream); transform: scale(1.05); }
-.plan-period { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sand); margin-bottom: 10px; font-weight: 400; }
-.plan-phase-title { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 400; color: var(--ink); margin-bottom: 16px; }
-.plan-items { list-style: none; text-align: left; display: flex; flex-direction: column; gap: 9px; }
-.plan-items li { font-size: 13px; color: var(--ink-soft); padding-left: 18px; position: relative; font-weight: 300; line-height: 1.6; }
-.plan-items li::before { content: '—'; position: absolute; left: 0; color: var(--sand); font-size: 10px; top: 2px; }
-
-/* ═══════════════════════════════════════
-   VISION QUOTE
-═══════════════════════════════════════ */
-.vision-section { background: var(--cream-dark); padding: 100px 0; }
-.vision-inner { max-width: 860px; margin: 0 auto; padding: 0 48px; text-align: center; }
-.vision-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 3.5vw, 40px); font-weight: 300; font-style: italic; line-height: 1.5; color: var(--ink); margin-bottom: 36px; position: relative; padding-top: 20px; }
-.vision-quote::before { content: '\201C'; font-size: 100px; color: rgba(201,185,154,0.35); position: absolute; top: -20px; left: -10px; line-height: 1; font-family: 'Cormorant Garamond', serif; }
-.vision-divider { width: 40px; height: 1px; background: var(--sand); margin: 18px auto; }
-.vision-author { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--ink-muted); font-weight: 400; }
-
-/* ═══════════════════════════════════════
-   LEADERSHIP
-═══════════════════════════════════════ */
-.leadership-section { background: var(--white); }
-.lead-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--sand-light); border: 1px solid var(--sand-light); }
-.lead-card { background: var(--white); padding: 36px 28px; text-align: center; transition: background 0.25s, transform 0.22s; cursor: default; }
-.lead-card:hover { background: var(--cream-mid); transform: translateY(-2px); }
-.lead-icon { width: 44px; height: 44px; margin: 0 auto 18px; color: var(--sand); }
-.lead-icon svg { width: 100%; height: 100%; stroke-width: 1; }
-.lead-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; color: var(--ink); margin-bottom: 10px; }
-.lead-text { font-size: 12.5px; line-height: 1.75; color: var(--ink-muted); font-weight: 300; }
-
-/* ═══════════════════════════════════════
-   CONTACT
-═══════════════════════════════════════ */
-.contact-section { background: var(--cream-dark); padding: 88px 0; }
-.contact-inner { max-width: 680px; margin: 0 auto; padding: 0 48px; text-align: center; }
-.contact-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px,4vw,38px); font-weight: 400; color: var(--ink); margin-bottom: 16px; }
-.contact-sub { font-size: 14px; color: var(--ink-muted); margin-bottom: 44px; line-height: 1.7; font-weight: 300; }
-.contact-info { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 8px; }
-.contact-item-label { font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sand); margin-bottom: 5px; font-weight: 400; }
-.contact-item-value { font-size: 14px; color: var(--ink); font-weight: 300; }
-.btn-primary { display: inline-block; margin-top: 36px; background: var(--ink); color: var(--cream); font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; padding: 16px 40px; text-decoration: none; font-weight: 400; transition: background 0.25s, letter-spacing 0.3s, transform 0.22s; }
-.btn-primary:hover { background: var(--ink-soft); letter-spacing: 0.28em; transform: translateY(-2px); }
-
-/* ═══════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════ */
-.footer { background: var(--ink); color: rgba(245,240,232,0.6); padding: 56px 48px 28px; }
-.footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(201,185,154,0.15); margin-bottom: 28px; }
-.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 500; letter-spacing: 0.28em; color: var(--cream); display: block; margin-bottom: 14px; }
-.footer-tagline { font-size: 12px; line-height: 1.7; color: rgba(245,240,232,0.45); font-weight: 300; max-width: 220px; }
-.footer-col-title { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sand); margin-bottom: 16px; font-weight: 400; }
-.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer-links a { font-size: 12.5px; color: rgba(245,240,232,0.55); text-decoration: none; transition: color 0.2s, padding-left 0.22s; font-weight: 300; display: block; }
-.footer-links a:hover { color: var(--cream); padding-left: 4px; }
-.footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-.footer-copy { font-size: 10.5px; color: rgba(245,240,232,0.3); letter-spacing: 0.1em; }
-.footer-year { font-family: 'Cormorant Garamond', serif; color: var(--sand); font-size: 13px; }
-
-/* ═══════════════════════════════════════
-   SCROLL REVEAL
-═══════════════════════════════════════ */
-.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out); }
-.reveal.visible { opacity: 1; transform: none; }
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes slideUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
-
-/* ═══════════════════════════════════════
-   RESPONSIVE — TABLET (≤ 1024px)
-═══════════════════════════════════════ */
-@media (max-width: 1024px) {
-  .topbar { display: none !important; }
-  .navbar { padding: 0 24px; grid-template-columns: auto 1fr auto; }
-  .nav-left, .nav-right { display: none; }
-  .hamburger { display: flex; }
-  .logo { font-size: 19px; }
-
-  .hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-visual { min-height: 280px; }
-  .hero-monogram { font-size: 180px; }
-  .hero-label { display: none; }
-  .hero-content { padding: 56px 40px; }
-
-  .profil-grid { grid-template-columns: 1fr; gap: 40px; }
-  .profil-div-v { display: none; }
-
-  .marche-grid { grid-template-columns: 1fr 1fr; }
-  .marche-grid .marche-card:last-child { grid-column: 1 / -1; }
-
-  .axes-grid { grid-template-columns: 1fr; }
-  .axe-card { padding: 40px 32px; }
-
-  .plan-timeline { grid-template-columns: 1fr; }
-  .plan-timeline::before { display: none; }
-  .plan-phase { padding: 0 0 32px; text-align: left; display: grid; grid-template-columns: 64px 1fr; gap: 0 20px; align-items: start; }
-  .plan-dot { margin: 0; }
-  .plan-period { grid-column: 2; }
-  .plan-phase-title { grid-column: 2; }
-  .plan-items { grid-column: 2; }
-
-  .lead-grid { grid-template-columns: 1fr 1fr; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-  .section-inner { padding: 0 32px; }
-  .section { padding: 64px 0; }
-}
-
-@media (max-width: 640px) {
-  .announce { font-size: 9.5px; letter-spacing: 0.12em; padding: 8px 16px; }
-  .navbar { padding: 0 16px; }
-  .logo { font-size: 18px; letter-spacing: 0.24em; }
-  .hero-visual { min-height: 200px; }
-  .hero-monogram { font-size: 120px; }
-  .hero-content { padding: 40px 24px 48px; }
-  .hero-eyebrow { font-size: 9.5px; }
-  .hero-intro { font-size: 13.5px; margin-bottom: 36px; }
-  .hero-subtitle { font-size: 16px; }
-  .section { padding: 52px 0; }
-  .section-inner { padding: 0 20px; }
-  .section-header { margin-bottom: 36px; }
-  .profil-text { font-size: 14px; }
-  .stats-grid { grid-template-columns: 1fr 1fr; }
-  .stat-num { font-size: 40px; }
-  .marche-grid { grid-template-columns: 1fr; }
-  .marche-grid .marche-card:last-child { grid-column: auto; }
-  .marche-card { padding: 32px 24px; }
-  .axe-card { padding: 36px 24px; }
-  .axe-num { font-size: 60px; }
-  .plan-phase { grid-template-columns: 48px 1fr; gap: 0 16px; }
-  .plan-dot { width: 48px; height: 48px; font-size: 16px; }
-  .vision-section { padding: 64px 0; }
-  .vision-inner { padding: 0 24px; }
-  .vision-quote::before { font-size: 72px; left: -4px; }
-  .lead-grid { grid-template-columns: 1fr; }
-  .lead-card { padding: 28px 24px; text-align: left; display: flex; gap: 18px; align-items: flex-start; }
-  .lead-icon { flex-shrink: 0; margin: 0; }
-  .contact-section { padding: 56px 0; }
-  .contact-inner { padding: 0 20px; }
-  .contact-info { flex-direction: column; gap: 20px; align-items: center; }
-  .footer { padding: 44px 20px 24px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 32px; padding-bottom: 32px; }
-  .footer-tagline { max-width: 100%; }
-  .footer-bottom { flex-direction: column; text-align: center; gap: 6px; }
-  .btn-primary { padding: 14px 32px; font-size: 10px; }
-}
-
-@media (max-width: 380px) {
-  .hero-monogram { font-size: 90px; }
-  .stats-grid { grid-template-columns: 1fr; }
-  .tags { gap: 8px; }
-  .tag { font-size: 9.5px; padding: 6px 12px; }
-}
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .understanding-grid { grid-template-columns: 1fr 1fr; }
+    .phases { grid-template-columns: 1fr; }
+    .challenge-item { grid-template-columns: 60px 1fr; }
+    .challenge-note { display: none; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    section { padding: 80px 24px; }
+    #hero { padding: 100px 24px 60px; }
+    .understanding-grid { grid-template-columns: 1fr; }
+    .objection-layout { grid-template-columns: 1fr; gap: 40px; }
+    .proof-layout { grid-template-columns: 1fr; gap: 40px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+    .bridge-visual { flex-direction: column; }
+  }
 </style>
 </head>
 <body>
 
-<!-- ─── ANNOUNCE ─── -->
-<div class="announce" id="announce">
-  Candidature &nbsp;·&nbsp; Directeur Commercial France &nbsp;·&nbsp; <em>Terence Richard</em>
-</div>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">T · R</a>
+  <ul class="nav-links">
+    <li><a href="#understanding" data-section="understanding">Understanding</a></li>
+    <li><a href="#challenges" data-section="challenges">Challenges</a></li>
+    <li><a href="#objection" data-section="objection">Objection</a></li>
+    <li><a href="#preuves" data-section="preuves">Evidence</a></li>
+    <li><a href="#jours" data-section="jours">First 90 Days</a></li>
+    <li><a href="#cta" data-section="cta">Contact</a></li>
+  </ul>
+</nav>
 
-<!-- ─── STICKY HEADER ─── -->
-<div class="sticky-header">
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-text">S</div>
+  <p class="hero-eyebrow">Terence Richard · Commercial Director France · Serax</p>
+  <h1 class="hero-title">
+    Serax France doesn't need a revolution.<br>
+    It needs the right person to <em>protect what works</em> —<br>
+    and unlock what's next.
+  </h1>
+  <p class="hero-sub">
+    This page reflects what I took away from our conversation — my understanding of Serax, its challenges, and the case for my candidacy.
+  </p>
+  <div class="hero-line">Following our interview</div>
+  <div class="scroll-indicator"><span>Scroll</span></div>
+</section>
 
-  <!-- TOP BAR -->
-  <div class="topbar" id="topbar">
-    <div class="topbar-langs">
-      <span class="active">FR</span><span class="sep">·</span><span>EN</span>
-    </div>
-    <a href="#contact" class="topbar-item">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-      Contact
-    </a>
-    <a href="#" class="topbar-item">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-      LinkedIn
-    </a>
+<!-- UNDERSTANDING -->
+<section id="understanding">
+  <div class="reveal">
+    <div class="section-number">01</div>
+    <p class="section-label">What I understand about Serax</p>
+    <h2 class="section-title">A brand built on collaboration,<br><em>not just production</em></h2>
+    <div class="divider"></div>
   </div>
-
-  <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
-
-    <div class="nav-left">
-      <div class="nav-item" id="item-vision">
-        <button class="nav-link">
-          Vision stratégique
-          <span class="nav-chev"><svg viewBox="0 0 8 8" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1 2.5 4 5.5 7 2.5"/></svg></span>
-        </button>
-      </div>
-      <div class="nav-item" id="item-marche">
-        <button class="nav-link">
-          Le Marché
-          <span class="nav-chev"><svg viewBox="0 0 8 8" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1 2.5 4 5.5 7 2.5"/></svg></span>
-        </button>
-      </div>
-      <div class="nav-item" id="item-plan">
-        <button class="nav-link">
-          Plan d'action
-          <span class="nav-chev"><svg viewBox="0 0 8 8" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1 2.5 4 5.5 7 2.5"/></svg></span>
-        </button>
-      </div>
+  <div class="understanding-grid reveal">
+    <div class="understanding-card">
+      <div class="card-number">①</div>
+      <h3 class="card-title">65+ designers. One consistent philosophy.</h3>
+      <p class="card-body">Serax is not a manufacturer — it's a creative ecosystem. From Ann Demeulemeester to Yotam Ottolenghi, Marni to Kelly Wearstler, each collection carries a story. The commercial role is to translate that story into commercial reality, market after market.</p>
+      <span class="card-tag">Brand DNA</span>
     </div>
-
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-
-    <a href="#hero" class="logo" style="text-align:center;">TR</a>
-
-    <div class="nav-right">
-      <div class="nav-item" id="item-profil">
-        <button class="nav-link">
-          Mon Profil
-          <span class="nav-chev"><svg viewBox="0 0 8 8" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1 2.5 4 5.5 7 2.5"/></svg></span>
-        </button>
-      </div>
-      <div class="nav-item" id="item-apropos">
-        <button class="nav-link">
-          À Propos
-          <span class="nav-chev"><svg viewBox="0 0 8 8" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1 2.5 4 5.5 7 2.5"/></svg></span>
-        </button>
-      </div>
-      <a href="#contact" class="icon-btn" title="Contact">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
-      </a>
+    <div class="understanding-card">
+      <div class="card-number">②</div>
+      <h3 class="card-title">France is a top-3 market — and in growth.</h3>
+      <p class="card-body">Alongside the Netherlands, France is explicitly cited as a growing market in 2025. With 500–600 retail points already active, the network exists. The mission is to deepen it, activate the Living Lab concept, and convert presence into performance.</p>
+      <span class="card-tag">Market Position</span>
     </div>
-
-    <!-- MEGA MENUS -->
-    <div class="mega-wrapper">
-
-      <div class="mega-menu" id="mega-vision">
-        <div class="mega-inner" style="grid-template-columns:repeat(3,1fr);gap:0;">
-          <div style="border-right:1px solid var(--sand-light);padding-right:44px;">
-            <div class="mega-col-title">Axes principaux</div>
-            <ul class="mega-col-links">
-              <li><a href="#strategie" onclick="closeAllMenus()">Activation de l'écosystème</a></li>
-              <li><a href="#strategie" onclick="closeAllMenus()">Développement de partenariats</a></li>
-              <li><a href="#strategie" onclick="closeAllMenus()">Renforcement de la visibilité</a></li>
-            </ul>
-          </div>
-          <div style="padding-left:44px;border-right:1px solid var(--sand-light);padding-right:44px;">
-            <div class="mega-col-title">Segments cibles</div>
-            <ul class="mega-col-links">
-              <li><a href="#marche" onclick="closeAllMenus()">Hospitality &amp; Hôtellerie</a></li>
-              <li><a href="#marche" onclick="closeAllMenus()">Architectes &amp; Designers</a></li>
-              <li><a href="#marche" onclick="closeAllMenus()">Retail premium</a></li>
-              <li><a href="#marche" onclick="closeAllMenus()">Corporate gifting</a></li>
-            </ul>
-          </div>
-          <div style="padding-left:44px;">
-            <div class="mega-col-title">Vision à moyen terme</div>
-            <ul class="mega-col-links">
-              <li><a href="#vision" onclick="closeAllMenus()">Référence hospitality France</a></li>
-              <li><a href="#vision" onclick="closeAllMenus()">Réseau de prescripteurs</a></li>
-              <li><a href="#vision" onclick="closeAllMenus()">Présence retail premium</a></li>
-            </ul>
-            <a href="#strategie" class="mega-see-all" onclick="closeAllMenus()">Voir la stratégie complète</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="mega-menu" id="mega-marche">
-        <div class="mega-inner" style="grid-template-columns:200px 1fr 1fr;gap:0 44px;">
-          <div style="background:var(--cream-dark);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:28px;margin:-44px 0 -48px -48px;">
-            <div style="font-family:'Cormorant Garamond',serif;font-size:58px;color:var(--sand);opacity:0.5;line-height:1;">FR</div>
-            <div style="font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-muted);text-align:center;">Marché Français</div>
-          </div>
-          <div>
-            <div class="mega-col-title">Écosystèmes clés</div>
-            <ul class="mega-col-links">
-              <li><a href="#marche" onclick="closeAllMenus()">Gastronomie &amp; Restauration</a></li>
-              <li><a href="#marche" onclick="closeAllMenus()">Hôtellerie de luxe</a></li>
-              <li><a href="#marche" onclick="closeAllMenus()">Architecture &amp; Design</a></li>
-              <li><a href="#marche" onclick="closeAllMenus()">Lifestyle premium</a></li>
-            </ul>
-          </div>
-          <div>
-            <div class="mega-col-title">Réseaux prioritaires</div>
-            <ul class="mega-col-links">
-              <li><a href="#marche" onclick="closeAllMenus()">Architectes d'intérieur</a></li>
-              <li><a href="#marche" onclick="closeAllMenus()">Groupes hôteliers</a></li>
-              <li><a href="#marche" onclick="closeAllMenus()">Concept stores design</a></li>
-              <li><a href="#marche" onclick="closeAllMenus()">Promoteurs immobiliers</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="mega-menu" id="mega-plan">
-        <div class="mega-inner" style="grid-template-columns:repeat(3,1fr);gap:0;">
-          <div style="border-right:1px solid var(--sand-light);padding-right:44px;">
-            <div class="mega-col-title">0 – 30 jours</div>
-            <ul class="mega-col-links">
-              <li><a href="#plan" onclick="closeAllMenus()">Phase d'écoute</a></li>
-              <li><a href="#plan" onclick="closeAllMenus()">Analyse de l'équipe</a></li>
-              <li><a href="#plan" onclick="closeAllMenus()">Comptes clés existants</a></li>
-            </ul>
-          </div>
-          <div style="padding-left:44px;border-right:1px solid var(--sand-light);padding-right:44px;">
-            <div class="mega-col-title">30 – 60 jours</div>
-            <ul class="mega-col-links">
-              <li><a href="#plan" onclick="closeAllMenus()">Identification des priorités</a></li>
-              <li><a href="#plan" onclick="closeAllMenus()">Comptes stratégiques</a></li>
-              <li><a href="#plan" onclick="closeAllMenus()">Activation quick wins</a></li>
-            </ul>
-          </div>
-          <div style="padding-left:44px;">
-            <div class="mega-col-title">60 – 90 jours</div>
-            <ul class="mega-col-links">
-              <li><a href="#plan" onclick="closeAllMenus()">Feuille de route</a></li>
-              <li><a href="#plan" onclick="closeAllMenus()">Lancement des initiatives</a></li>
-              <li><a href="#plan" onclick="closeAllMenus()">KPIs &amp; objectifs</a></li>
-            </ul>
-            <a href="#plan" class="mega-see-all" onclick="closeAllMenus()">Voir le plan complet</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="mega-menu" id="mega-profil">
-        <div class="mega-inner" style="grid-template-columns:200px 1fr 1fr;gap:0 44px;">
-          <div style="background:var(--cream-dark);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;padding:28px;margin:-44px 0 -48px -48px;">
-            <div style="font-family:'Cormorant Garamond',serif;font-size:52px;color:var(--sand);font-weight:300;line-height:1;">20+</div>
-            <div style="width:28px;height:1px;background:var(--sand);"></div>
-            <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink-muted);text-align:center;line-height:1.6;">Années d'exp.<br>B2B</div>
-          </div>
-          <div>
-            <div class="mega-col-title">Expériences</div>
-            <ul class="mega-col-links">
-              <li><a href="#profil" onclick="closeAllMenus()">Management commercial</a></li>
-              <li><a href="#profil" onclick="closeAllMenus()">Pilotage de P&amp;L</a></li>
-              <li><a href="#profil" onclick="closeAllMenus()">Comptes stratégiques</a></li>
-              <li><a href="#profil" onclick="closeAllMenus()">Distribution premium</a></li>
-            </ul>
-          </div>
-          <div>
-            <div class="mega-col-title">Atouts clés</div>
-            <ul class="mega-col-links">
-              <li><a href="#profil" onclick="closeAllMenus()">Structuration de marchés</a></li>
-              <li><a href="#profil" onclick="closeAllMenus()">Activation d'écosystèmes</a></li>
-              <li><a href="#profil" onclick="closeAllMenus()">Réseau prescripteurs</a></li>
-            </ul>
-            <a href="#profil" class="mega-see-all" onclick="closeAllMenus()">Voir le profil complet</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="mega-menu" id="mega-apropos">
-        <div class="mega-inner" style="grid-template-columns:200px 1fr 1fr;gap:0 44px;">
-          <div style="background:var(--ink);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:28px;margin:-44px 0 -48px -48px;">
-            <div style="font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--cream);font-weight:400;letter-spacing:0.06em;text-align:center;line-height:1.3;">Terence<br>Richard</div>
-            <div style="width:28px;height:1px;background:var(--sand);"></div>
-            <div style="font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--sand);">Dir. Commercial</div>
-          </div>
-          <div>
-            <div class="mega-col-title">Candidature</div>
-            <ul class="mega-col-links">
-              <li><a href="#hero" onclick="closeAllMenus()">Introduction</a></li>
-              <li><a href="#profil" onclick="closeAllMenus()">Mon profil</a></li>
-              <li><a href="#strategie" onclick="closeAllMenus()">Vision stratégique</a></li>
-              <li><a href="#plan" onclick="closeAllMenus()">Plan 90 jours</a></li>
-            </ul>
-          </div>
-          <div>
-            <div class="mega-col-title">Contact</div>
-            <ul class="mega-col-links">
-              <li><a href="#contact" onclick="closeAllMenus()">Coordonnées</a></li>
-              <li><a href="#" onclick="closeAllMenus()">LinkedIn</a></li>
-              <li><a href="#contact" onclick="closeAllMenus()">Envoyer un message</a></li>
-            </ul>
-            <a href="#contact" class="mega-see-all" onclick="closeAllMenus()">Prendre contact</a>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /mega-wrapper -->
-  </nav>
-</div>
-
-<!-- Backdrop desktop -->
-<div class="menu-overlay" id="overlay" onclick="closeAllMenus()"></div>
-
-<!-- DRAWER OVERLAY -->
-<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
-
-<!-- MOBILE DRAWER -->
-<div class="mobile-drawer" id="mobileDrawer">
-  <div class="drawer-header">
-    <span class="drawer-logo">TR</span>
-    <button class="drawer-close" onclick="closeDrawer()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-  </div>
-  <nav class="drawer-nav">
-    <div class="drawer-section">
-      <button class="drawer-item" onclick="toggleDrawerSub('sub-vision',this)">
-        Vision stratégique
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="drawer-sub" id="sub-vision">
-        <div class="drawer-sub-title">Axes</div>
-        <a href="#strategie" onclick="closeDrawer()">Activation de l'écosystème</a>
-        <a href="#strategie" onclick="closeDrawer()">Développement de partenariats</a>
-        <a href="#strategie" onclick="closeDrawer()">Renforcement de la visibilité</a>
-        <div class="drawer-sub-title">Objectifs</div>
-        <a href="#vision" onclick="closeDrawer()">Référence hospitality France</a>
-        <a href="#vision" onclick="closeDrawer()">Réseau de prescripteurs</a>
-      </div>
+    <div class="understanding-card">
+      <div class="card-number">③</div>
+      <h3 class="card-title">Two ambitions running in parallel.</h3>
+      <p class="card-body">Serax is simultaneously anchoring its retail leadership (blended shopping, Living Lab rollout) and building its hospitality capabilities globally — a Global Hospitality Director was recently recruited. France is the test case for both. In 2025, 654 Michelin-starred restaurants make France the world's premier hospitality market.</p>
+      <span class="card-tag">Strategic Moment</span>
     </div>
-    <div class="drawer-section">
-      <button class="drawer-item" onclick="toggleDrawerSub('sub-marche',this)">
-        Le Marché
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="drawer-sub" id="sub-marche">
-        <div class="drawer-sub-title">Écosystèmes</div>
-        <a href="#marche" onclick="closeDrawer()">Gastronomie &amp; Restauration</a>
-        <a href="#marche" onclick="closeDrawer()">Hôtellerie de luxe</a>
-        <a href="#marche" onclick="closeDrawer()">Architecture &amp; Design</a>
-        <div class="drawer-sub-title">Réseaux</div>
-        <a href="#marche" onclick="closeDrawer()">Architectes d'intérieur</a>
-        <a href="#marche" onclick="closeDrawer()">Groupes hôteliers</a>
-        <a href="#marche" onclick="closeDrawer()">Concept stores design</a>
-      </div>
-    </div>
-    <div class="drawer-section">
-      <button class="drawer-item" onclick="toggleDrawerSub('sub-plan',this)">
-        Plan d'action
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="drawer-sub" id="sub-plan">
-        <a href="#plan" onclick="closeDrawer()">0–30 jours : Écoute &amp; Analyse</a>
-        <a href="#plan" onclick="closeDrawer()">30–60 jours : Priorisation</a>
-        <a href="#plan" onclick="closeDrawer()">60–90 jours : Lancement</a>
-      </div>
-    </div>
-    <div class="drawer-section">
-      <button class="drawer-item" onclick="toggleDrawerSub('sub-profil',this)">
-        Mon Profil
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="drawer-sub" id="sub-profil">
-        <a href="#profil" onclick="closeDrawer()">Expérience &amp; compétences</a>
-        <a href="#leadership" onclick="closeDrawer()">Approche de leadership</a>
-        <a href="#profil" onclick="closeDrawer()">Atouts différenciants</a>
-      </div>
-    </div>
-    <div class="drawer-section">
-      <button class="drawer-item" onclick="toggleDrawerSub('sub-apropos',this)">
-        À Propos
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-      <div class="drawer-sub" id="sub-apropos">
-        <a href="#hero" onclick="closeDrawer()">Introduction</a>
-        <a href="#strategie" onclick="closeDrawer()">Vision stratégique</a>
-        <a href="#contact" onclick="closeDrawer()">Contact</a>
-      </div>
-    </div>
-  </nav>
-  <div class="drawer-footer">
-    <a href="#">LinkedIn</a>
-    <a href="#contact" class="primary" onclick="closeDrawer()">Contact</a>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════
-     HERO
-════════════════════════════════════════ -->
-<section class="hero" id="hero">
-  <div class="hero-visual">
-    <div class="hero-pattern"></div>
-    <div class="hero-monogram">TR</div>
-    <div class="hero-label">Vision Stratégique · France · 2025</div>
-  </div>
-  <div class="hero-content">
-    <span class="hero-eyebrow">Candidature — Directeur Commercial France</span>
-    <h1 class="hero-title">Développement<br><em>de Serax</em><br>en France</h1>
-    <p class="hero-subtitle">Terence Richard</p>
-    <div class="hero-divider"></div>
-    <p class="hero-intro">Serax occupe une position unique à l'intersection du design, de l'hospitality et du lifestyle premium. La France représente l'un des marchés les plus influents en Europe — un écosystème riche à structurer et à activer.</p>
-    <a href="#profil" class="hero-cta">Découvrir la vision <span class="hero-cta-line"></span></a>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     PROFIL
-════════════════════════════════════════ -->
-<section class="section profil-section" id="profil">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <span class="section-tag">Mon Profil</span>
-      <h2 class="section-title">Dirigeant commercial<br><em>&amp; développeur de marchés</em></h2>
+<!-- CHALLENGES -->
+<section id="challenges">
+  <div class="reveal">
+    <div class="section-number">02</div>
+    <p class="section-label">What I heard in our conversation</p>
+    <h2 class="section-title">The four real<br><em>challenges</em> ahead</h2>
+    <div class="divider" style="background: rgba(201,185,154,0.4);"></div>
+  </div>
+  <div class="challenge-list reveal">
+    <div class="challenge-item">
+      <div class="challenge-idx">01</div>
+      <div class="challenge-text">Stabilize the retail network — 500+ points of sale need activation, not administration.</div>
+      <div class="challenge-note">Living Lab deployment in France<br>First 3 PDV already interested</div>
     </div>
-    <div class="profil-grid reveal">
+    <div class="challenge-item">
+      <div class="challenge-idx">02</div>
+      <div class="challenge-text">Rebuild trust with the team — 3 commercial reps + 1 agent who need direction, not disruption.</div>
+      <div class="challenge-note">Stability as the priority<br>Listening before acting</div>
+    </div>
+    <div class="challenge-item">
+      <div class="challenge-idx">03</div>
+      <div class="challenge-text">Open the gifting channel — B2B corporate from scratch, low investment, quick wins.</div>
+      <div class="challenge-note">Go-to-market construction<br>Network activation</div>
+    </div>
+    <div class="challenge-item">
+      <div class="challenge-idx">04</div>
+      <div class="challenge-text">Lay the groundwork for 2027 — hospitality, A&D prescription, new growth relays.</div>
+      <div class="challenge-note">654 Michelin stars in France<br>Untapped A&D bridge</div>
+    </div>
+  </div>
+  <div class="challenge-verdict reveal">
+    "What you're not looking for: someone who arrives with a grand transformation plan. What you are looking for: someone who understands the value of what exists — and knows where to push to go further."
+  </div>
+</section>
+
+<!-- OBJECTION -->
+<section id="objection">
+  <div class="reveal">
+    <div class="section-number">03</div>
+    <p class="section-label">The legitimate question</p>
+    <h2 class="section-title">Addressing the retail<br><em>experience gap</em> directly</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="objection-layout reveal">
+    <div class="objection-left">
+      <p class="objection-label">The objection</p>
+      <p class="objection-quote">"He doesn't come from retail. 75% of our French business is retail. How will he manage 500+ points of sale?"</p>
+    </div>
+    <div class="objection-right">
+      <div class="response-step">
+        <div class="step-marker">I</div>
+        <div class="step-content">
+          <h4 class="step-title">Acknowledge</h4>
+          <p class="step-body">You're right — I haven't managed a 500-store retail network directly. That's a fair observation and I won't sidestep it.</p>
+        </div>
+      </div>
+      <div class="response-step">
+        <div class="step-marker">II</div>
+        <div class="step-content">
+          <h4 class="step-title">The bridge</h4>
+          <p class="step-body">But here's what I know about your 500 retailers: most of them were introduced to Serax by an architect, a designer, or a decorator. That's exactly the network I've spent 4 years building at Exta Archis — 700+ A&D professionals who specify products, influence purchasing decisions, and bridge design culture with commercial reality.</p>
+        </div>
+      </div>
+      <div class="response-step">
+        <div class="step-marker">III</div>
+        <div class="step-content">
+          <h4 class="step-title">The conclusion</h4>
+          <p class="step-body">In a market where Serax retail is premium by definition — Le Bon Marché, Galeries Lafayette, Merci, concept stores — the language spoken is design, not distribution. My network doesn't compete with your retail. <strong>It feeds it.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bridge-visual reveal">
+    <div class="bridge-node">
+      <div class="bridge-node-label">My network</div>
+      <div class="bridge-node-value">700+<br>Architects & Designers</div>
+    </div>
+    <div class="bridge-arrow">→</div>
+    <div class="bridge-node">
+      <div class="bridge-node-label">They prescribe to</div>
+      <div class="bridge-node-value">Retail clients<br>+ Hospitality projects</div>
+    </div>
+    <div class="bridge-arrow">→</div>
+    <div class="bridge-node">
+      <div class="bridge-node-label">Which feeds</div>
+      <div class="bridge-node-value">Both Serax<br>channels simultaneously</div>
+    </div>
+  </div>
+</section>
+
+<!-- PREUVES -->
+<section id="preuves">
+  <div class="reveal">
+    <div class="section-number">04</div>
+    <p class="section-label">Aligned to your specific challenges</p>
+    <h2 class="section-title">Four proofs,<br><em>not promises</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="preuves-tabs reveal">
+    <button class="tab-btn active" onclick="switchTab(0)">Team Stability</button>
+    <button class="tab-btn" onclick="switchTab(1)">Premium Retail</button>
+    <button class="tab-btn" onclick="switchTab(2)">Matrix Org</button>
+    <button class="tab-btn" onclick="switchTab(3)">New Channels</button>
+  </div>
+
+  <div class="tab-content active" id="tab-0">
+    <div class="proof-layout">
       <div>
-        <div class="profil-text">
-          <p>Dirigeant commercial avec plus de vingt ans d'expérience en développement et structuration de marchés B2B en France et à l'international.</p>
-          <p>Plus récemment, création et structuration d'une plateforme de distribution dans l'univers du mobilier premium avec activation d'un réseau d'architectes et de prescripteurs.</p>
-        </div>
-        <div class="tags">
-          <span class="tag">Management commercial</span>
-          <span class="tag">Pilotage P&amp;L</span>
-          <span class="tag">Comptes stratégiques</span>
-          <span class="tag">Marchés premium</span>
-          <span class="tag">Prescription</span>
-          <span class="tag">Distribution sélective</span>
+        <p class="proof-challenge-label">Your challenge</p>
+        <div class="proof-challenge">
+          <p class="proof-challenge-text">The role has seen recent changes. The team needs reassurance, not rebuilding. Continuity and trust come first.</p>
         </div>
       </div>
-      <div class="profil-div-v"></div>
       <div>
-        <div class="stats-grid">
-          <div class="stat-card"><div class="stat-num">20<sup>+</sup></div><div class="stat-label">Années d'expérience B2B</div></div>
-          <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Axes stratégiques France</div></div>
-          <div class="stat-card"><div class="stat-num">90</div><div class="stat-label">Jours pour un plan concret</div></div>
-          <div class="stat-card"><div class="stat-num">5</div><div class="stat-label">Segments à activer</div></div>
+        <p class="proof-evidence-label">My evidence</p>
+        <p class="proof-evidence-text">At BCD Travel, I inherited a team of 10 and a P&L under significant cost pressure. My response wasn't to rebuild — it was to listen, clarify priorities, and let the team understand where we were going together. The result: the team itself became the asset. Clients stayed because the people stayed.</p>
+        <div class="proof-kpi">
+          <div class="kpi-item">
+            <div class="kpi-value">98%</div>
+            <div class="kpi-label">Client<br>retention rate</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">+25%</div>
+            <div class="kpi-label">Revenue<br>growth</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">0</div>
+            <div class="kpi-label">Voluntary<br>team departures</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-1">
+    <div class="proof-layout">
+      <div>
+        <p class="proof-challenge-label">Your challenge</p>
+        <div class="proof-challenge">
+          <p class="proof-challenge-text">500+ premium retail points need activation, not administration. Each partner must tell the right Serax story — with the right space, the right collections, the right narrative.</p>
+        </div>
+      </div>
+      <div>
+        <p class="proof-evidence-label">My evidence</p>
+        <p class="proof-evidence-text">Managing 130+ European suppliers at Exta Archis taught me that a network is only as strong as each partner's ability to tell your story. I structured joint business plans, CRM tracking, and KPI frameworks with partners who had never worked that way. The Living Lab model — shop-in-shop, samples only, commission-based — is a governance model I can implement. It requires commercial trust, partner education, and operational discipline. That's what I do.</p>
+        <div class="proof-kpi">
+          <div class="kpi-item">
+            <div class="kpi-value">130+</div>
+            <div class="kpi-label">Supplier network<br>managed directly</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">3</div>
+            <div class="kpi-label">First Living Lab<br>France targets ready</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-2">
+    <div class="proof-layout">
+      <div>
+        <p class="proof-challenge-label">Your challenge</p>
+        <div class="proof-challenge">
+          <p class="proof-challenge-text">Reporting to the Global Retail Director, collaborating with 4 Country Managers, aligning with hospitality, marketing, and product teams in Antwerp simultaneously.</p>
+        </div>
+      </div>
+      <div>
+        <p class="proof-evidence-label">My evidence</p>
+        <p class="proof-evidence-text">At CWT, I managed a multinational account across 13 countries with 12 FTEs, coordinating global functions, local operations, and executive stakeholders simultaneously. Matrix organizations are not a complexity I navigate — they're the environment I perform in. The key is clear escalation paths, transparent reporting, and over-communication across time zones and functions.</p>
+        <div class="proof-kpi">
+          <div class="kpi-item">
+            <div class="kpi-value">13</div>
+            <div class="kpi-label">Countries<br>coordinated</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">12</div>
+            <div class="kpi-label">FTEs under<br>management</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">20+</div>
+            <div class="kpi-label">Years in matrix<br>organizations</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-content" id="tab-3">
+    <div class="proof-layout">
+      <div>
+        <p class="proof-challenge-label">Your challenge</p>
+        <div class="proof-challenge">
+          <p class="proof-challenge-text">Build a B2B corporate gifting channel in France — from zero, with constrained budget, in a new-to-category market.</p>
+        </div>
+      </div>
+      <div>
+        <p class="proof-evidence-label">My evidence</p>
+        <p class="proof-evidence-text">At Workforce Logiq, I launched a product with zero French market presence, zero brand awareness, and a lean team. The challenge wasn't product — it was go-to-market construction: identifying the right entry points, building a short list of strategic targets, and closing before the organization doubted the investment. A €1M strategic contract in 18 months with no marketing budget. The gifting opportunity at Serax is the same muscle — applied to a brand people already love.</p>
+        <div class="proof-kpi">
+          <div class="kpi-item">
+            <div class="kpi-value">€1M</div>
+            <div class="kpi-label">Contract from<br>zero base</div>
+          </div>
+          <div class="kpi-item">
+            <div class="kpi-value">18</div>
+            <div class="kpi-label">Months to<br>first major win</div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════
-     MARCHÉ
-════════════════════════════════════════ -->
-<section class="section marche-section" id="marche">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <span class="section-tag">Le Marché Français</span>
-      <h2 class="section-title">Un écosystème premium<br><em>à fort potentiel</em></h2>
-    </div>
-    <div class="marche-grid reveal">
-      <div class="marche-card">
-        <div class="marche-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-        <div class="marche-card-title">Hospitality</div>
-        <div class="marche-card-text">Un secteur en plein essor, moteur de croissance pour Serax en France.</div>
-        <ul class="marche-list">
-          <li>Hôtels &amp; palaces</li>
-          <li>Restaurants &amp; chefs étoilés</li>
-          <li>Groupes de restauration</li>
-        </ul>
-      </div>
-      <div class="marche-card">
-        <div class="marche-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20 14.5 14.5 0 000-20"/><line x1="2" y1="12" x2="22" y2="12"/></svg></div>
-        <div class="marche-card-title">Prescription</div>
-        <div class="marche-card-text">Les architectes et designers sont des relais d'influence essentiels.</div>
-        <ul class="marche-list">
-          <li>Architectes d'intérieur</li>
-          <li>Studios de design</li>
-          <li>Promoteurs immobiliers</li>
-        </ul>
-      </div>
-      <div class="marche-card">
-        <div class="marche-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg></div>
-        <div class="marche-card-title">Retail Premium</div>
-        <div class="marche-card-text">Une distribution sélective cohérente avec le positionnement Serax.</div>
-        <ul class="marche-list">
-          <li>Concept stores design</li>
-          <li>Showrooms sélectifs</li>
-          <li>Corners dédiés premium</li>
-        </ul>
-      </div>
-    </div>
+<!-- 90 JOURS -->
+<section id="jours">
+  <div class="reveal">
+    <div class="section-number">05</div>
+    <p class="section-label">A concrete plan, not a promise</p>
+    <h2 class="section-title">The first<br><em>90 days</em></h2>
+    <div class="divider"></div>
   </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     STRATÉGIE
-════════════════════════════════════════ -->
-<section class="section strategie-section" id="strategie">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <span class="section-tag">Stratégie de Développement</span>
-      <h2 class="section-title">Trois axes<br><em>pour s'imposer</em></h2>
-    </div>
-    <div class="axes-grid reveal">
-      <div class="axe-card">
-        <span class="axe-num">01</span>
-        <span class="axe-tag">Axe 1</span>
-        <div class="axe-title">Activation de l'écosystème</div>
-        <div class="axe-text">Identifier et activer tous les acteurs clés du marché français autour de Serax.</div>
-        <ul class="axe-list">
-          <li>Architectes &amp; designers</li>
-          <li>Hospitality &amp; restaurants</li>
-          <li>Retail premium</li>
-          <li>Projets immobiliers</li>
-        </ul>
-      </div>
-      <div class="axe-card">
-        <span class="axe-num">02</span>
-        <span class="axe-tag">Axe 2</span>
-        <div class="axe-title">Développement de partenariats</div>
-        <div class="axe-text">Construire des partenariats durables avec les acteurs premium du marché.</div>
-        <ul class="axe-list">
-          <li>Groupes hôteliers</li>
-          <li>Restaurateurs &amp; chefs</li>
-          <li>Concept stores</li>
-          <li>Promoteurs immobiliers</li>
-        </ul>
-      </div>
-      <div class="axe-card">
-        <span class="axe-num">03</span>
-        <span class="axe-tag">Axe 3</span>
-        <div class="axe-title">Renforcement de la visibilité</div>
-        <div class="axe-text">Affirmer la présence de Serax dans l'univers créatif et professionnel français.</div>
-        <ul class="axe-list">
-          <li>Événements &amp; salons</li>
-          <li>Collaborations chefs &amp; designers</li>
-          <li>Réseaux professionnels</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     PLAN 90 JOURS
-════════════════════════════════════════ -->
-<section class="section plan-section" id="plan">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <span class="section-tag">Plan d'Action</span>
-      <h2 class="section-title">Les premiers<br><em>90 jours</em></h2>
-    </div>
-    <div class="plan-timeline reveal">
-      <div class="plan-phase">
-        <div class="plan-dot">1</div>
-        <div class="plan-period">0 — 30 jours</div>
-        <div class="plan-phase-title">Écoute &amp; Analyse</div>
-        <ul class="plan-items">
-          <li>Phase d'écoute approfondie</li>
-          <li>Analyse de l'équipe en place</li>
-          <li>Audit des comptes clés</li>
-          <li>Compréhension de la distribution et des partenaires existants</li>
-        </ul>
-      </div>
-      <div class="plan-phase">
-        <div class="plan-dot">2</div>
-        <div class="plan-period">30 — 60 jours</div>
-        <div class="plan-phase-title">Priorisation</div>
-        <ul class="plan-items">
-          <li>Identification des priorités stratégiques</li>
-          <li>Sélection des comptes stratégiques</li>
-          <li>Identification et activation des quick wins</li>
-        </ul>
-      </div>
-      <div class="plan-phase">
-        <div class="plan-dot">3</div>
-        <div class="plan-period">60 — 90 jours</div>
-        <div class="plan-phase-title">Lancement</div>
-        <ul class="plan-items">
-          <li>Construction d'une feuille de route structurée</li>
-          <li>Lancement des initiatives prioritaires</li>
-          <li>Mise en place des KPIs</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     VISION QUOTE
-════════════════════════════════════════ -->
-<section class="vision-section" id="vision">
-  <div class="vision-inner">
-    <blockquote class="vision-quote reveal">
-      Positionner Serax comme une référence incontournable dans l'univers hospitality et design en France.
-    </blockquote>
-    <div class="vision-divider"></div>
-    <div class="vision-author">Terence Richard — Vision à moyen terme</div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     LEADERSHIP
-════════════════════════════════════════ -->
-<section class="section leadership-section" id="leadership">
-  <div class="section-inner">
-    <div class="section-header reveal" style="text-align:center;">
-      <span class="section-tag" style="display:block;text-align:center;">Approche de Leadership</span>
-      <h2 class="section-title" style="text-align:center;">Un management<br><em>orienté terrain</em></h2>
-    </div>
-    <div class="lead-grid reveal">
-      <div class="lead-card">
-        <div class="lead-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <div>
-          <div class="lead-title">Clarté des objectifs</div>
-          <div class="lead-text">Définir des priorités claires, mesurables et alignées avec la stratégie globale Serax.</div>
-        </div>
-      </div>
-      <div class="lead-card">
-        <div class="lead-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <div>
-          <div class="lead-title">Responsabilisation</div>
-          <div class="lead-text">Accompagner l'équipe existante dans une culture de l'autonomie et de la performance.</div>
-        </div>
-      </div>
-      <div class="lead-card">
-        <div class="lead-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <div>
-          <div class="lead-title">Proximité terrain</div>
-          <div class="lead-text">Un management ancré dans la réalité du marché, au contact direct des clients et partenaires.</div>
-        </div>
-      </div>
-      <div class="lead-card">
-        <div class="lead-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-        <div>
-          <div class="lead-title">Communication directe</div>
-          <div class="lead-text">Favoriser la collaboration ouverte et la transparence à tous les niveaux de l'organisation.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     CONTACT
-════════════════════════════════════════ -->
-<section class="contact-section" id="contact">
-  <div class="contact-inner reveal">
-    <h2 class="contact-title">Prenons contact</h2>
-    <p class="contact-sub">Je suis disponible pour échanger sur cette opportunité et approfondir ensemble la vision stratégique pour Serax en France.</p>
-    <div class="contact-info">
-      <div class="contact-item">
-        <div class="contact-item-label">Nom</div>
-        <div class="contact-item-value">Terence Richard</div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-label">Poste visé</div>
-        <div class="contact-item-value">Directeur Commercial France</div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item-label">Disponibilité</div>
-        <div class="contact-item-value">Sur demande</div>
-      </div>
-    </div>
-    <a href="mailto:terence.richard75@gmail.com" class="btn-primary">Envoyer un message</a>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════
-     FOOTER
-════════════════════════════════════════ -->
-<footer class="footer">
-  <div class="footer-grid">
-    <div>
-      <span class="footer-logo">TR</span>
-      <p class="footer-tagline">Vision stratégique pour le développement de Serax en France — Terence Richard, Directeur Commercial.</p>
-    </div>
-    <div>
-      <div class="footer-col-title">Vision</div>
-      <ul class="footer-links">
-        <li><a href="#strategie">Stratégie</a></li>
-        <li><a href="#marche">Marché français</a></li>
-        <li><a href="#plan">Plan 90 jours</a></li>
-        <li><a href="#vision">Objectifs</a></li>
+  <div class="phases reveal">
+    <div class="phase">
+      <div class="phase-period">Days 0 – 30</div>
+      <h3 class="phase-title">Listen before acting</h3>
+      <ul class="phase-items">
+        <li class="phase-item">Individual meetings with all 3 commercial reps + agent — understand the real terrain, frustrations, strengths</li>
+        <li class="phase-item">Deep dives with key retail accounts — what works, what doesn't, what's been promised</li>
+        <li class="phase-item">Alignment with Global Retail Director on France KPIs and priorities</li>
+        <li class="phase-item">Network cartography: top performers, at-risk accounts, under-exploited partners</li>
       </ul>
+      <div class="phase-bar"></div>
     </div>
-    <div>
-      <div class="footer-col-title">Profil</div>
-      <ul class="footer-links">
-        <li><a href="#profil">Expérience</a></li>
-        <li><a href="#leadership">Leadership</a></li>
-        <li><a href="#profil">Compétences</a></li>
+    <div class="phase">
+      <div class="phase-period">Days 30 – 60</div>
+      <h3 class="phase-title">Stabilize and prioritize</h3>
+      <ul class="phase-items">
+        <li class="phase-item">Identify 10–15 retail accounts with strong untapped potential</li>
+        <li class="phase-item">First Living Lab candidate conversations in France (Paris / Lille pipeline)</li>
+        <li class="phase-item">Initial A&D network activation — identify hospitality & gifting opportunities</li>
+        <li class="phase-item">Simple gifting B2B proposal — fast, budget-controlled, measurable</li>
       </ul>
+      <div class="phase-bar"></div>
     </div>
-    <div>
-      <div class="footer-col-title">Contact</div>
-      <ul class="footer-links">
-        <li><a href="#contact">Message direct</a></li>
-        <li><a href="#">LinkedIn</a></li>
+    <div class="phase">
+      <div class="phase-period">Days 60 – 90</div>
+      <h3 class="phase-title">Build for growth</h3>
+      <ul class="phase-items">
+        <li class="phase-item">Present France 2025–2026 plan to leadership: retail + gifting + A&D relays</li>
+        <li class="phase-item">CRM, reporting, and shared forecast system with Antwerp operational</li>
+        <li class="phase-item">First concrete quick wins launched and measurable</li>
+        <li class="phase-item">Country Manager alignment on shared practices and synergies</li>
       </ul>
+      <div class="phase-bar"></div>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">© Terence Richard — Candidature Serax France</span>
-    <span class="footer-year">2025</span>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="reveal">
+    <div class="section-number" style="text-align:center;">06</div>
+    <p class="section-label" style="text-align:center;">Let's continue</p>
+    <h2 class="cta-title">One conversation changed my understanding of Serax. <em>A second one</em> might change everything.</h2>
+    <p class="cta-sub">I came into our interview knowing Serax as a design brand. I left understanding it as a commercial ecosystem with specific human and structural needs — and a clear window of opportunity in France.</p>
+    <div class="cta-buttons">
+      <a href="mailto:terence.richard@email.com" class="btn-primary">Send an email</a>
+      <a href="https://linkedin.com/in/terencerichard" class="btn-secondary" target="_blank">LinkedIn</a>
+      <a href="tel:+33600000000" class="btn-secondary">Call directly</a>
+    </div>
   </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Terence Richard — Commercial Director France candidacy</span>
+  <span class="footer-note">Prepared following interview with Serax · 2026</span>
 </footer>
 
-<!-- ═══════════════════════════════════════
-     JAVASCRIPT — Navigation ultra-fluide
-════════════════════════════════════════ -->
 <script>
-/* ────────────────────────────────────────
-   CONFIG
-──────────────────────────────────────── */
-const MENU_MAP = {
-  vision:  { item: 'item-vision',  mega: 'mega-vision'  },
-  marche:  { item: 'item-marche',  mega: 'mega-marche'  },
-  plan:    { item: 'item-plan',    mega: 'mega-plan'    },
-  profil:  { item: 'item-profil',  mega: 'mega-profil'  },
-  apropos: { item: 'item-apropos', mega: 'mega-apropos' },
-};
+  // ── NAV SCROLL ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+  });
 
-let currentMenu  = null;
-let hoverTimer   = null;
+  // ── ACTIVE NAV LINK ──
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a[data-section]');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.nav-links a[data-section="${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { threshold: 0.35 });
+  sections.forEach(s => observer.observe(s));
 
-/* ────────────────────────────────────────
-   MEGA MENUS — ouverture / fermeture
-──────────────────────────────────────── */
-function openMenu(key) {
-  if (hoverTimer) { clearTimeout(hoverTimer); hoverTimer = null; }
-  if (currentMenu === key) return;
+  // ── REVEAL ON SCROLL ──
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => revealObserver.observe(r));
 
-  /* Ferme le précédent sans reset du backdrop */
-  if (currentMenu) {
-    document.getElementById(MENU_MAP[currentMenu].item).classList.remove('open');
-    document.getElementById(MENU_MAP[currentMenu].mega).classList.remove('active');
+  // ── TABS ──
+  function switchTab(index) {
+    document.querySelectorAll('.tab-btn').forEach((b, i) => {
+      b.classList.toggle('active', i === index);
+    });
+    document.querySelectorAll('.tab-content').forEach((c, i) => {
+      c.classList.toggle('active', i === index);
+    });
   }
 
-  currentMenu = key;
-  document.getElementById(MENU_MAP[key].item).classList.add('open');
-  document.getElementById(MENU_MAP[key].mega).classList.add('active');
-  document.getElementById('overlay').classList.add('active');
-}
-
-function scheduleClose(key) {
-  hoverTimer = setTimeout(() => {
-    if (currentMenu === key) closeAllMenus();
-  }, 120);
-}
-
-function cancelClose() {
-  if (hoverTimer) { clearTimeout(hoverTimer); hoverTimer = null; }
-}
-
-function closeAllMenus() {
-  Object.values(MENU_MAP).forEach(({ item, mega }) => {
-    document.getElementById(item).classList.remove('open');
-    document.getElementById(mega).classList.remove('active');
+  // ── SMOOTH SCROLL FOR NAV ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
   });
-  document.getElementById('overlay').classList.remove('active');
-  currentMenu = null;
-  if (hoverTimer) { clearTimeout(hoverTimer); hoverTimer = null; }
-}
-
-/* ── Hover intent sur chaque nav-item ── */
-Object.keys(MENU_MAP).forEach(key => {
-  const navItem  = document.getElementById(MENU_MAP[key].item);
-  const megaPanel = document.getElementById(MENU_MAP[key].mega);
-
-  /* Ouverture au survol du bouton */
-  navItem.addEventListener('mouseenter', () => openMenu(key));
-  navItem.addEventListener('mouseleave', () => scheduleClose(key));
-
-  /* Maintien ouvert quand la souris est sur le panel */
-  megaPanel.addEventListener('mouseenter', cancelClose);
-  megaPanel.addEventListener('mouseleave', () => scheduleClose(key));
-});
-
-/* ── Clic (fallback touch / clavier) ── */
-Object.keys(MENU_MAP).forEach(key => {
-  const btn = document.querySelector(`#${MENU_MAP[key].item} .nav-link`);
-  btn.addEventListener('click', () => {
-    currentMenu === key ? closeAllMenus() : openMenu(key);
-  });
-});
-
-/* ────────────────────────────────────────
-   MOBILE DRAWER
-──────────────────────────────────────── */
-let drawerOpen = false;
-
-function openDrawer() {
-  drawerOpen = true;
-  document.getElementById('mobileDrawer').classList.add('open');
-  document.getElementById('drawerOverlay').classList.add('open');
-  document.getElementById('hamburger').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeDrawer() {
-  drawerOpen = false;
-  document.getElementById('mobileDrawer').classList.remove('open');
-  document.getElementById('drawerOverlay').classList.remove('open');
-  document.getElementById('hamburger').classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.getElementById('hamburger').addEventListener('click', () => {
-  drawerOpen ? closeDrawer() : openDrawer();
-});
-
-let openSub = null;
-function toggleDrawerSub(id, btn) {
-  const sub = document.getElementById(id);
-  if (openSub && openSub !== id) {
-    const prev = document.getElementById(openSub);
-    if (prev) {
-      prev.classList.remove('open');
-      if (prev.previousElementSibling) prev.previousElementSibling.classList.remove('expanded');
-    }
-  }
-  const isOpen = sub.classList.toggle('open');
-  btn.classList.toggle('expanded', isOpen);
-  openSub = isOpen ? id : null;
-}
-
-/* ────────────────────────────────────────
-   SCROLL
-──────────────────────────────────────── */
-const navbar   = document.getElementById('navbar');
-const announce = document.getElementById('announce');
-const topbar   = document.getElementById('topbar');
-let lastY = 0;
-
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-
-  /* Navbar ombre */
-  navbar.classList.toggle('scrolled', y > 10);
-
-  /* Announce + topbar disparaissent après 80px */
-  const compact = y > 80;
-  announce.classList.toggle('hidden', compact);
-  topbar.classList.toggle('hidden', compact);
-
-  /* Ferme les megas au scroll */
-  if (Math.abs(y - lastY) > 50) closeAllMenus();
-  lastY = y;
-}, { passive: true });
-
-/* ────────────────────────────────────────
-   CLAVIER
-──────────────────────────────────────── */
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeAllMenus(); closeDrawer(); }
-});
-
-/* ────────────────────────────────────────
-   SCROLL REVEAL
-──────────────────────────────────────── */
-const revealObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 </script>
 </body>
 </html>
